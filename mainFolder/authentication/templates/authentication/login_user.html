@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Login | Create
+{% endblock %}
+
+{% block content %}
+<div class="w-fit" style="margin: 0 auto;">
+  <h3 class="text-center">login</h3>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">submit</button>
+  </form>
+  <a href="{% url 'authentication:index' %}" class="text-center">Go back</a>
+</div>
+{% endblock %}

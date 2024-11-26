@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Login | Create
+{% endblock %}
+
+{% block content %}
+<div class="w-fit" style="margin: 0 auto;">
+  <button>
+    <a href="{% url 'authentication:login_user' %}">Login as user</a>
+  </button>
+  <button>
+    <a href="{% url 'authentication:login_admin' %}">Login as Admin</a>
+  </button>
+  <button>
+    <a href="{% url 'authentication:create_user' %}">Create Account</a>
+  </button>
+  <button>
+    <a href="{% url 'authentication:create_admin' %}">Create admin Account</a>
+  </button>
+</div>
+{% endblock %}

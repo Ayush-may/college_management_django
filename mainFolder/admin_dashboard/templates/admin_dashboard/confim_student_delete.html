@@ -1,0 +1,11 @@
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">delete</button>
+  <button type="button">
+    <a href="{% url 'admin_dashboard:students' %}">
+      cancel
+    </a>
+  </button>
+</form>
+{% endblock %}

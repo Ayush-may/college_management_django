@@ -1,0 +1,125 @@
+{% extends 'admin_dashboard.html' %}
+
+{% block title %}
+admin | student_details
+{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb h6">
+    <li class="breadcrumb-item"><a href="{% url 'admin_dashboard:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'admin_dashboard:students'%}">Students</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav>
+<div class="mx-auto px-3 px-md-0" style="max-width: 500px;">
+  <div>
+    <div class="row gap-2">
+      <h6 class="m-0 p-0">Not editable</h6>
+      <input type="text" class="form-control col-12 col-md" disabled readonly value="ayush" placeholder="first name">
+      <input type="text" class="form-control col-12 col-md" disabled readonly value="ayush" placeholder="last name">
+      <input type="text" class="form-control col-12 col-md" disabled readonly value="ayush" placeholder="enrollment">
+    </div>
+    <div class="row mt-3 gap-2 ">
+      <div class="col form-control-group p-0">
+        <label>Semester: </label>
+        <div class="btn-group p-0 m-0">
+          <button class="btn btn-danger">-</button>
+          <!-- <input type="text" class="form-control"value="7" placeholder="semester"> -->
+          <input type="text" class="form-control text-center" value="7" placeholder="semester" readonly
+            style="border-radius: 0;">
+          <button class="btn btn-success">+</button>
+        </div>
+      </div>
+      <div class="col form-control-group p-0">
+        <label>Gender: </label>
+        <select class="form-control">
+          <option value="" disabled selected>---select---</option>
+          <option value="">male</option>
+          <option value="">female</option>
+        </select>
+      </div>
+      <div class="col form-control-group p-0">
+        <label>Phone Number: </label>
+        <input type="text" class="form-control col-12 col-md" value="+91 233XXXXX" placeholder="phone_number">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 mt-3 p-0 form-control-group">
+        <label>Addmission year:</label>
+        <input type="text" class="form-control col-12 col-md" value="2021" placeholder="addmission_year" readonly>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <h6 class="m-0 p-0">CGPA</h6>
+      <div class="card">
+        <div class="card-body">
+          <table class="table-bordered w-100 text-center">
+            <thead>
+              <tr>
+                <th>1sem</th>
+                <th>2sem</th>
+                <th>3sem</th>
+                <th>4sem</th>
+                <th>5sem</th>
+                <th>6sem</th>
+                <th>7sem</th>
+                <th>8sem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <h6 class="m-0 p-0">Course Fees</h6>
+      <div class="card">
+        <div class="card-body">
+          <table class="table-bordered w-100 text-center">
+            <thead>
+              <tr>
+                <th>1sem</th>
+                <th>2sem</th>
+                <th>3sem</th>
+                <th>4sem</th>
+                <th>5sem</th>
+                <th>6sem</th>
+                <th>7sem</th>
+                <th>8sem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row gap-2 mx-auto mt-2">
+      <button class="btn col btn-danger m-0">cancel</button>
+      <button class="btn col btn-primary m-0">save</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'admin_dashboard.html' %}
+
+{% block title %}
+admin | Students
+{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb h6">
+    <li class="breadcrumb-item"><a href="{% url 'admin_dashboard:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Students</li>
+  </ol>
+</nav>
+<div class="w-100 d-flex gap-3" style="justify-content: center;flex: 1;">
+  <div class="card" style="flex:2;min-width: 300px;height: fit-content;">
+    <div class="card-header">
+      <h6 class="m-0 p-0">Add stundent</h6>
+    </div>
+    <form action="" method="get" class="card-body d-flex gap-2" style="flex-direction: column;">
+      <input type="hidden" name="add_student" value="True">
+      <input type="text" class="form-control" placeholder="enter first name" name="first_name">
+      <input type="text" class="form-control" placeholder="enter last name" name="last_name">
+      <input type="text" class="form-control" placeholder="enter enrollment" name="enrollment">
+      <select name="department" class="form-control" id="department">
+        <option value="None" selected disabled>----</option>
+        {% for department in departments %}
+        <option value="{{ department.id }}">{{ department.name }}</option>
+        {% endfor%}
+      </select>
+      <button class="btn btn-success">Add student</button>
+    </form>
+  </div>
+  <div class="flex-grow-1">
+    <table class="rounded-sm w-100 table-bordered text-center" style="flex:1;">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>enrollment</th>
+          <th>department</th>
+          <th>edit student</th>
+          <th>details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr style="font-size: 0.8rem;">
+          <td>{{forloop.counter}}</td>
+          <td>{{student.first_name}}</td>
+          <td>{{student.last_name}}</td>
+          <td>{{student.enrollment}}</td>
+          <td>{{student.department__name}}</td>
+          <td>
+            <a href="{% url 'admin_dashboard:update_student' student.id %}">
+              <button class="btn btn-success btn-sm my-1">update</button>
+            </a>
+            <a href="{% url 'admin_dashboard:delete_student' student.id %}">
+              <button class="btn btn-danger btn-sm my-1">remove</button>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'admin_dashboard:student_details' student.id %}">
+              <button class="btn btn-success btn-sm my-1">show details</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="flex-grow-1" style="min-width: 200px;">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="m-0 p-0">Filter</h6>
+      </div>
+      <div class="card-body">
+        <form class="d-flex flex-column gap-2">
+          <div>
+            <h6 class="m-0 p-0 fw-light mt-1">Name:</h6>
+            <input type="text" class="form-control" name="name" placeholder="enter name">
+          </div>
+          <div>
+            <h6 class="m-0 p-0 fw-light mt-1">Department:</h6>
+            <select name="department" class="form-control">
+              <option disabled selected>select</option>
+              <option>Option1</option>
+              <option>Option2</option>
+            </select>
+          </div>
+          <div>
+            <h6 class="m-0 p-0 fw-light mt-1">Tuition fees:</h6>
+            <select name="department" class="form-control">
+              <option disabled selected>select</option>
+              <option>Due</option>
+              <option>paid</option>
+            </select>
+          </div>
+          <button class="btn btn-primary">search</button>
+          <button type="reset" class="btn btn-outline-dark">clear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

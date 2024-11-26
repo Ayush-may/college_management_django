@@ -1,0 +1,127 @@
+{% extends 'admin_dashboard.html' %}
+
+{% block title %}
+admin
+{% endblock %}
+
+{% block username %}
+Ayush
+{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb h6">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
+<h1><b>Dashboard</b></h1>
+<hr>
+<div class="d-flex flex-wrap gap-2">
+  <div class="card" style="width: fit-content;">
+    <div class="card-body">
+      <h6>Total Students : {{ total_students }}</h6>
+      <h6>Total Staffs : 10</h6>
+      <h6>Total Departments : {{ total_departments }}</h6>
+    </div>
+  </div>
+
+  <div class="card flex-grow-1" style="width: fit-content;">
+    <div class="card-header">
+      <h6 class="m-0 p-0">Make a annoucement</h6>
+    </div>
+    <div class="card-body">
+      <form class="gap-2 w-full d-flex flex-wrap">
+        <div class="row mx-1 gap-2">
+          <input class="col-12 col-md w-full form-control p-1" name="text" placeholder="enter news..">
+          <input type="file" class="col-12 col-md w-full form-control p-1" name="text" placeholder="enter news..">
+        </div>
+        <button class="btn btn-sm btn-success">For staffs</button>
+        <button class="btn btn-sm btn-success">For Students</button>
+        <button class="btn btn-sm btn-info flex-grow-1">view all annoucements</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="d-flex gap-2 mt-4">
+
+  <div class="card" style="flex:1;">
+    <div class="card-header">
+      <h6 class="m-0 p-0">Finacials Summary</h6>
+    </div>
+    <div class="card-body">
+      <h6 class="d-inline">collected : 10</h6>
+      <h6 class="d-inline mx-3">Pending : 10</h6>
+      <button class="btn btn-sm btn-primary">view fees statistics</button>
+    </div>
+  </div>
+
+  <div class="card" style="flex:1;">
+    <div class="card-header">
+      <h6 class="m-0 p-0">average attendance summary</h6>
+    </div>
+    <div class="card-body d-flex gap-2">
+      <button class="btn btn-sm btn-info flex-grow-1">Students : 10</button>
+      <button class="btn btn-sm btn-info flex-grow-1">Staffs : 10</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="mt-4">
+
+  <div class="">
+    <h3 class="text-center"><b>Performance Metric</b></h3>
+    <hr>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h6 class="m-0 p-0"><b>Average Grades</b></h6>
+    </div>
+    <div class="card-body d-flex gap-2">
+      <div class="card card-body" style="flex: 1;">
+        Here add average grades of each department
+      </div>
+      <div class="card card-body" style="flex: 2;">
+        and here add the pie chart for better visual
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 mt-4">
+    <div class="card" style="flex: 1;">
+      <div class="card-header">
+        <h6 class="m-0 p-0"><b>Top performing students</b></h6>
+      </div>
+      <div class="card-body">
+        this is body
+      </div>
+    </div>
+    <div class="card" style="flex: 1;">
+      <div class="card-header">
+        <h6 class="p-0 m-0"><b>Risk performing students</b></h6>
+      </div>
+      <div class="card-body">
+        this is body
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h6 class="m-0 p-0"><b>Exams result summary</b></h6>
+    </div>
+    <div class="card-body d-flex gap-2">
+      <div class="card card-body" style="flex: 1;">
+        Here add average grades of each department
+        show: pass rate, avg. score , Highest score , lowest score
+      </div>
+      <div class="card card-body" style="flex: 2;">
+        and here add the pie chart for better visual
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

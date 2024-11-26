@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Login | Create
+{% endblock %}
+
+{% block content %}
+<div class="w-fit" style="margin: 0 auto;">
+  <h3 class="text-center">create user</h3>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="d-flex gap-2" style="flex-direction: column;">
+      <input type="text" name="username" placeholder="Enter username here" required>
+      <input type="password" name="password" placeholder="Enter password here" required>
+      <input type="password" name="confirm-password" placeholder="Enter password again here" required>
+      <button type="submit">submit</button>
+    </div>
+  </form>
+  <a href="{% url 'authentication:index' %}" class="text-center">Go back</a>
+</div>
+{% endblock %}
