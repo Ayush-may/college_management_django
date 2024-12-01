@@ -14,7 +14,10 @@ def dashboard(request):
 def logout(request):
   pass
 
-def students(request):
+def students(request):  
+  q = request.GET.get('q','')
+  d = request.GET.get('d','')
+
   if request.GET.get("add_student"):
     student = StudentModel( 
       first_name = request.GET.get("first_name"),
@@ -27,13 +30,21 @@ def students(request):
     return redirect("admin_dashboard:students")
 
   else:
-    students = StudentModel.objects.select_related("department").values(
-      "id","first_name","last_name","enrollment","department__pk","department__code", "department__name"
+    if q or d:
+      students = StudentModel.objects.select_related("department").filter(first_name__icontains=q, department__name__icontains=d).values(
+        "id","first_name","last_name","enrollment","department__pk","department__code", "department__name"
       )
+    else:
+      students = StudentModel.objects.select_related("department").values(
+        "id","first_name","last_name","enrollment","department__pk","department__code", "department__name"
+      )
+    
     departments = DepartmentModel.objects.all().values()
     return render(request,'admin_dashboard/student/students.html', {
       "students" : students,
-      "departments" :departments
+      "departments" :departments,
+      "q":q,
+      "d" :d,
       })
 
 def delete_student(request,id):
@@ -63,7 +74,39 @@ def student_details(request,id):
   return render(request, 'admin_dashboard/student/student_details.html')
 
 def staffs(request):
-  return HttpResponse('admin/staffs')
+  return render(request,'admin_dashboard/staff/staff.html')
+
+def add_staff(request):
+  departments = DepartmentModel.objects.all()
+  d = request.GET.get('d','')
+  s = request.GET.get('s','')
+  f = request.GET.get('f','')
+  l = request.GET.get('l','')
+  dob = request.GET.get('dob','')
+
+
+  if request.method == "POST":
+    s = request.POST.get('s','')
+    d = request.POST.get('d','')
+    f = request.POST.get('f','')
+    l = request.POST.get('l','')
+    dob = request.POST.get('dob','')
+
+    if s is None or d is None or f is None or f is None or l is None or dob is None:
+      messages.error(request,'Kindly enter all details')
+      return redirect("admin_dashboard:staff")
+
+    
+
+  data = {
+    "departments" : departments,
+    'd':d,
+    "s":s,
+    "f":f,
+    "l":l,
+    "dob":dob,
+  }
+  return render(request,'admin_dashboard/staff/add_staff.html',data)
 
 def departments(request):
   return HttpResponse('admin/departments')
